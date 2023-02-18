@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<main>
+   
+    <div style="padding-bottom:30px" class="content d-flex flex-column gap-2 justify-content-center align-items-center">
+    <div class="d-flex flex-column gap-2 justify-content-center align-items-center ">
+        <div style="height:80px; margin-top:30px;" class="d-flex my-card justify-content-center align-items-center w-100 animate pop">
+            <h1>Dashboard</h1>
+        </div>
+    <div class="d-flex flex-row gap-2 justify-content-center align-items-center">
+        <div class="p-2 table-container animate pop" style="overflow: scroll;"> 
+            <h4>Most Replied To</h4>
+            {{_analysis[0]|safe}}
+        </div>
+        <div class="p-2 table-container animate pop" style="overflow: scroll;">
+            <h4>Most Frequent Words</h4>
+            {{_analysis[1]|safe}}
+        </div>
+        <div class="d-flex flex-column gap-2 justify-content-center align-items-center">
+            <div class="d-flex flex-row gap-2 justify-content-center align-items-center">
+                <div class = 'my-card p-2 w-100 animate pop'>
+                    <h4>txt</h4>
+                    mohammed nasser hilal ahmed mohammed 
+                </div>
+                <div class = 'my-card p-2 w-100 animate pop'>
+                    <h4>txt</h4>
+                    mohammed nasser hilal ahmed mohammed 
+                </div>
+                <div class = 'my-card p-2 w-100 animate pop'>
+                    <h4>txt</h4>
+                    mohammed nasser hilal ahmed mohammed 
+                    
+                </div>
+            </div>
+            <div class="my-container p-2 w-100 animate pop">
+                <h4>Most Replied To</h4>
+                <h6>from {{_analysis[2]['from']|safe}} to {{_analysis[2]['to']|safe}}</h6>
+            <div style= "display: flex; justify-content: center;" id='all-pub-graph1'>
+                <script type="text/javascript">
+            
+                    var the_pubs_graph = {{_analysis[2]['fig']|safe}};
+                    Plotly.plot("all-pub-graph1", the_pubs_graph, {});
+                </script>
+            </div>
+        </div>
+        <div class="my-container p-2 w-100 animate pop">
+            <h4>Most Replied To</h4>
+            <div style="display: flex; justify-content: center;"" id='all-pub-graph2'>
+                <script type="text/javascript">
+                    var the_pubs_graph = {{_analysis[2]['fig']|safe}};
+                    Plotly.plot("all-pub-graph2", the_pubs_graph, {});
+                </script>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+</div>
+   
+</div>
+   
+</main>
+
+{% endblock %}

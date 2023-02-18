@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <main>
+      
+        <div class="container">
+
+          <div class="row d-flex w-auto justify-content-center h-100 animate pop">
+            <div class=" " clip-path="url(#mask)">
+              <div class="card " style = 'background-color: rgba(0, 0, 0, 0.2);backdrop-filter: blur(3rem); box-shadow: rgba(0, 0, 0, 0.1) 0px 0 1rem 0.1rem inset;'>
+                <div class="card-body">
+                  <form class="mb-3 mt-md-4 d-flex flex-column justify-content-center gap-3", action="", id = 'f', method="POST">
+                    <h1 style="color: #f9f9f9; font-family: 'Fira Mono', monospace;" class="fw-bold fw-bolder fs-5 fs-lg-1 text-center">Twitter Profile Analytics</h1>
+                    <input style="color:rgb(249, 249, 249, 0.7); background-color:rgb(249, 249, 249, 0.1); height: 45px" type="text" name = 'user' id = "user" class="form-control bg-transparent focus:bg-transparent" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" required>
+
+                  <button style="background-color: cadetblue; border:rgba(0, 0, 0, .3)" id = "search" class="btn-lg btn-secondary w-100" type="submit">
+                      
+                    <span>
+                      <svg width="35" height="35" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19.7 18.3L15.5 14.1C15.3 13.9 15 13.8 14.7 13.8C15.5 12.8 16 11.4 16 10C16 6.7 13.3 4 10 4C6.7 4 4 6.7 4 10C4 13.3 6.7 16 10 16C11.4 16 12.8 15.5 13.8 14.6C13.8 14.9 13.8 15.2 14.1 15.4L18.3 19.6C18.5 19.8 18.8 19.9 19 19.9C19.2 19.9 19.5 19.8 19.7 19.6C20.1 19.3 20.1 18.7 19.7 18.3ZM10 14.5C7.5 14.5 5.5 12.5 5.5 10C5.5 7.5 7.5 5.5 10 5.5C12.5 5.5 14.5 7.5 14.5 10C14.5 12.5 12.5 14.5 10 14.5Z" fill="white" fill-opacity="1"/>
+                        </svg>
+                        
+                    </span>
+                  </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+       
+      </div>
+    </main>
+    
+<script>
+    $(document).ready(function() {
+      const reg = /^[A-Za-z0-9_]{4,15}$/;
+      function tweak(){
+        $("#user").blur();
+        $("#user").addClass("disabled")
+        $("#search").addClass("disabled")
+        $("#search").html('<div class="spinner-grow spinner-grow-sm" role="status"></div>');
+        $("#user").removeClass("is-valid")
+
+      }
+      $("#f").on('submit',function(event) {
+        event.preventDefault();
+        tweak();
+        $("#f").unbind("submit");
+        document.getElementById("f").submit(); $("#f").submit()
+
+      });
+      
+
+  
+        $("#user").on("input", function() {
+         if (reg.test($("#user").val()))
+         {
+          $("#user").attr('class', 'form-control is-valid');
+          $("#search").prop('disabled', false);
+         }
+         else
+         {
+          $("#user").attr('class', 'form-control is-invalid');
+          $("#search").prop('disabled', true);
+         }
+        });
+    });
+    </script>
+
+{% endblock %}
