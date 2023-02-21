@@ -6,9 +6,10 @@
     <div style="padding-bottom:30px" class="content d-flex flex-column gap-2 justify-content-center align-items-center">
     <div class="d-flex flex-column gap-2 justify-content-center align-items-center ">
         <div style="height:80px; margin-top:30px;" class="d-flex my-card justify-content-center align-items-center w-100 animate pop">
-            <h1>Dashboard</h1>
+            <h1> Dashboard</h1>
+            
         </div>
-    <div class="d-flex flex-row gap-2 justify-content-center align-items-center">
+    <div class="d-flex flex-column flex-lg-row gap-2 justify-content-center align-items-center">
         <div class="p-2 table-container animate pop" style="overflow: scroll;"> 
             <h4>Most Replied To</h4>
             {{_analysis[0]|safe}}
@@ -18,23 +19,51 @@
             {{_analysis[1]|safe}}
         </div>
         <div class="d-flex flex-column gap-2 justify-content-center align-items-center">
-            <div class="d-flex flex-row gap-2 justify-content-center align-items-center">
-                <div class = 'my-card p-2 w-100 animate pop'>
-                    <h4>txt</h4>
-                    mohammed nasser hilal ahmed mohammed 
+            <div class="d-flex flex-column flex-lg-row gap-2 justify-content-center p-0 align-items-center mw-100">
+                <div class = 'my-card p-2 w-auto animate pop'>
+                    <h4>Avg Tweet Length</h4>
+                    <p>
+                    {{_analysis[3]}} word per tweet
+                </p>
                 </div>
-                <div class = 'my-card p-2 w-100 animate pop'>
-                    <h4>txt</h4>
-                    mohammed nasser hilal ahmed mohammed 
+                <div class = 'my-card p-2 w-auto animate pop'>
+                    
+                    <h4>Top Liked</h4>
+                    <p>
+                    {{_analysis[4]}} <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M16 5C16 5 13 5 12 8C11 5 8 5 8 5C5.8 5 4 6.8 4 9C4 13.1 12 18 12 18C12 18 20 13 20 9C20 6.8 18.2 5 16 5Z" fill="#f9f9f9" fill-opacity="1"/>
+                        </svg>
+                    </p>
+                        
                 </div>
-                <div class = 'my-card p-2 w-100 animate pop'>
-                    <h4>txt</h4>
-                    mohammed nasser hilal ahmed mohammed 
+                <div class = 'my-card p-2 w-auto animate pop'>
+                    <h4>Top Retweeted</h4>
+                    <p>
+                    {{_analysis[5]}} <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6 5H18V10H20L17 13L14 10H16V7H8V9H6V5Z" fill="#f9f9f9" fill-opacity="1"/>
+                        <path d="M18 18H6V13H4L7 10L10 13H8V16H16V14H18V18Z" fill="#f9f9f9" fill-opacity="1"/>
+                        </svg>
+                    </p>
+                         
+                    
+                </div>
+                <div class = 'my-card p-2 w-auto animate pop'>
+                    <h4>% Retweeted</h4>
+                    <p>
+                    {{_analysis[6]}} % of the tweets 
+                </p>
+                    
+                </div>
+                <div class = 'my-card p-2 w-auto animate pop'>
+                    <h4>User Language</h4>
+                    <p>
+                    {{_analysis[7]}}
+                </p>
                     
                 </div>
             </div>
             <div class="my-container p-2 w-100 animate pop">
-                <h4>Most Replied To</h4>
+                <h4>Tweet Activity</h4>
                 <h6>from {{_analysis[2]['from']|safe}} to {{_analysis[2]['to']|safe}}</h6>
             <div style= "display: flex; justify-content: center;" id='all-pub-graph1'>
                 <script type="text/javascript">

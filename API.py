@@ -5,8 +5,8 @@ from collections import Counter
 import json
 import plotly
 import plotly.express as px
-import plotly.io as pio 
-import os 
+import plotly.io as pio
+import os
 from dotenv import load_dotenv
 
 
@@ -43,11 +43,11 @@ def get_all(func,user_name,limit = 20,parse = lambda x:x, filter_ = lambda x:x,*
 
 def get_tweets(user, limit = 100):
     user_tweets = pd.DataFrame()
-    keys = ['id_str','created_at','text','in_reply_to_screen_name', 'retweeted', 'is_quote_status', 'favorite_count','retweet_count', 'lang' ]
+    keys = ['id_str','created_at','text','in_reply_to_screen_name', 'retweeted', 'is_quote_status', 'favorite_count','retweet_count', 'lang' , 'profile_image_url_https']
     for status in get_all(api.user_timeline, user, limit):
         json = status._json
         user_tweets = user_tweets.append({key:json.get(key) for key in keys}, ignore_index=True)
-    user_tweets['created_at'] = pd.to_datetime(user_tweets['created_at'])
+    #user_tweets.to_csv(f"tweets/{user}.csv", index = False)
     return user_tweets
 
 def get_pp(user):
@@ -61,10 +61,19 @@ def path_image(path):
 def _analysis(tweets):
     #classes = 'table table-bordered table-hover table-sm table-responsive'
     classes = ''
+    tweets['created_at'] = pd.to_datetime(tweets['created_at'])
     top_replies = list(tweets['in_reply_to_screen_name'].value_counts(sort = True, ascending = False).index)
     top_replies_html = (pd.DataFrame(list(zip(range(1,21),top_replies, map(get_pp,top_replies)))).rename({0:"Rank",1:"User",2:"Image"}, axis = 1).to_html(render_links=True,header=True,escape=False, index=False ,formatters={"Image":path_image},classes = classes,border= 0))
     ####
-    cnt = pd.DataFrame(Counter(" ".join(tweets.query("retweeted == 0")['text'].str.replace('(\\n)|( : )',' ', regex=True).str.replace('(@[A-z0-9_]+)|(https.+\S)|(RT)|(#.+\S)','', regex=True)).split(" ")).items()).rename({0:"Word", 1:"Frequency"}, axis =1).sort_values("Frequency", ascending = False)
+    percentage_retweeted =(tweets['retweeted'] == 0).sum()/len(tweets)
+    tweets['text'] = tweets.query("retweeted == 0")['text'].str.replace('(\\n)|( : )',' ', regex=True).str.replace('(@[A-z0-9_]+)|(https.+\S)|(RT)|(#.+\S)','', regex=True)
+    avg_len = tweets['text'].str.len().mean()
+    top_liked = tweets['favorite_count'].max()
+    top_retweeted = tweets['retweet_count'].max()
+    lang = tweets['lang'].mode().str.upper().values[0]
+    #avatar = tweets['profile_image_url_https'].mode().str.upper().values[0]
+    
+    cnt = pd.DataFrame(Counter(" ".join(tweets['text']).split(" ")).items()).rename({0:"Word", 1:"Frequency"}, axis =1).sort_values("Frequency", ascending = False)
     filtered_words = cnt[(cnt['Word'].str.len()>=4) & (cnt['Word'].str.len()<=8)].sort_values("Frequency", ascending = False).reset_index(drop=1)[:51]
     filtered_words.index =  range(1,len(filtered_words)+1)
     filtered_words = filtered_words.reset_index().rename({"index":"Rank"})
@@ -79,4 +88,4 @@ def _analysis(tweets):
          labels = {'x':"Time", "y":"Tweet Count"}, color_discrete_sequence=["#1DA1F2"],
          width=950, height=280).update_layout(font_color="#f9f9f9", plot_bgcolor= "rgba(0,0,0,0)",paper_bgcolor= 'rgba(0,0,0,0)' )
     all_pub_json = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
-    return [top_replies_html, words_html, {'fig':all_pub_json, 'from':timei,'to':timef }]
+    return [top_replies_html, words_html, {'fig':all_pub_json, 'from':timei,'to':timef }, avg_len, top_liked, top_retweeted, percentage_retweeted,lang, avatar]
