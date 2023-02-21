@@ -85,7 +85,12 @@ Server
 
 
    <li><a href="https://www.tweepy.org/"><img  width =30 height = 30 src="https://user-images.githubusercontent.com/61589143/97068916-041bc900-15f6-11eb-94ce-fbeef5d50f02.png" /></a> </li>
-</a> 
+   
+ <li><a href="https://plotly.com/"><img  width =30 height = 30 src="[https://user-images.githubusercontent.com/61589143/97068916-041bc900-15f6-11eb-94ce-fbeef5d50f02.png](https://www.vectorlogo.zone/logos/plot_ly/plot_ly-official.svg)" /></a> </li>
+
+
+
+
   </ul>
 
 
