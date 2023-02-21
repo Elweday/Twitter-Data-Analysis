@@ -50,7 +50,7 @@
   <img src="snaps/gif1.gif" alt="screenshot" />
   <img src="snaps/snap1.JPG" alt="screenshot" />
   
-  <img src="snaps/snap1.JPG" alt="screenshot" />
+  <img src="snaps/snap2.JPG" alt="screenshot" />
 </div>
 
 <br>
