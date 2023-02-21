@@ -15,13 +15,8 @@ df['data_created_at']
 
 app = Dash(__name__)
 
-
-
-
-
-
 xy = pd.DataFrame(df.data_created_at.dt.to_period('d').value_counts().sort_index())
-xy['year'] = xy.index.to_timestamp().year 
+xy['year'] = xy.index.to_timestamp().year
 timef , timei = xy.index.max().strftime("%m/%Y"), xy.index.min().strftime("%m/%Y")
 fig = px.area(
                  x=xy.index.to_timestamp().strftime("%d/%m"), y=xy['data_created_at'],color = xy['year'],
@@ -54,13 +49,6 @@ app.layout = html.Div(children=[
     html.H1(children='Hello Dash'),
     html.Div(children=
     f'''Your average tweet length is {30}'''),
-"""     dcc.DatePickerRange(
-        id='date-filter',
-        min_date_allowed=date(2023, 1, 1),
-        max_date_allowed=date.today(),
-        initial_visible_month=date(2023, 1, 1),
-        end_date=date.today()
-    ), """
 
 
     dcc.Graph(
@@ -69,7 +57,7 @@ app.layout = html.Div(children=[
     )
 
 ])
-
+#DateRangePickerCallBack
 """ @app.callback(
     Output('tweet-activity', 'figure'),
     Input('date-filter', 'start_date'),
@@ -84,6 +72,14 @@ def filter_tweet_activity(start_date, end_date):
     )
     fig.update_layout(transition_duration=500)
     return fig  """
+#DateRangePicker
+"""     dcc.DatePickerRange(
+        id='date-filter',
+        min_date_allowed=date(2023, 1, 1),
+        max_date_allowed=date.today(),
+        initial_visible_month=date(2023, 1, 1),
+        end_date=date.today()
+    ), """
 
 if __name__ == '__main__':
     app.run_server(debug=True)

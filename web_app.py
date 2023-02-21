@@ -3,6 +3,7 @@ import API
 from tweepy import errors
 from werkzeug.exceptions import HTTPException
 import logging
+from pandas import read_csv
 logging.basicConfig(filename='record.log', level=logging.DEBUG)
 
 validate = API.__validate__
@@ -33,6 +34,11 @@ def u(user):
         valid = False
         flash("Twitter User does not exist", 'info')
         return render_template("index.html", user_name = user, valid = valid )
+
+@app.route("/demo")
+def _():
+    tweets = read_csv("tweets/elonmusk.csv")
+    return render_template("analytics.html", user_name= "Elon Musk", _analysis = API._analysis(tweets))
 
 @app.route("/error")
 def error():
