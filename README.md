@@ -48,9 +48,9 @@
 
 <div align="center"> 
   <img src="snaps/gif1.gif" alt="screenshot" />
-  <img src="snaps/snap2.jpg" alt="screenshot" />
+  <img src="snaps/snap1.JPG" alt="screenshot" />
   
-  <img src="snaps/snap1.jpg" alt="screenshot" />
+  <img src="snaps/snap1.JPG" alt="screenshot" />
 </div>
 
 <br>
