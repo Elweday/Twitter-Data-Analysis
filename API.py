@@ -88,4 +88,4 @@ def _analysis(tweets):
          labels = {'x':"Time", "y":"Tweet Count"}, color_discrete_sequence=["#1DA1F2"],
          width=950, height=280).update_layout(font_color="#f9f9f9", plot_bgcolor= "rgba(0,0,0,0)",paper_bgcolor= 'rgba(0,0,0,0)' )
     all_pub_json = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
-    return [top_replies_html, words_html, {'fig':all_pub_json, 'from':timei,'to':timef }, avg_len, top_liked, top_retweeted, percentage_retweeted,lang, avatar]
+    return [top_replies_html, words_html, {'fig':all_pub_json, 'from':timei,'to':timef }, avg_len, top_liked, top_retweeted, percentage_retweeted,lang]
