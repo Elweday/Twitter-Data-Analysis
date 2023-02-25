@@ -7,7 +7,7 @@ from pandas import read_csv
 logging.basicConfig(filename='record.log', level=logging.DEBUG)
 
 validate = API.__validate__
-app = Flask(__name__)
+app = Flask(__name__, static_folder='/static')
 app.secret_key = 'super secret key'
 @app.route("/", methods = ['POST', 'GET'])
 def home():

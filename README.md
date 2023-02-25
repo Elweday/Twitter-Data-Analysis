@@ -86,7 +86,7 @@ Server
 
    <li><a href="https://www.tweepy.org/"><img  width =30 height = 30 src="https://user-images.githubusercontent.com/61589143/97068916-041bc900-15f6-11eb-94ce-fbeef5d50f02.png" /></a> </li>
    
- <li><a href="https://plotly.com/"><img  width =30 height = 30 src="[https://user-images.githubusercontent.com/61589143/97068916-041bc900-15f6-11eb-94ce-fbeef5d50f02.png](https://www.vectorlogo.zone/logos/plot_ly/plot_ly-official.svg)" /></a> </li>
+ <li><a href="https://plotly.com/"><img  width =60 height = 30 src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Plotly-logo.png" /></a> </li>
 
 
 
@@ -127,8 +127,8 @@ Server
 | ----------------- | ------------------------------------------------------------------ |
 | Primary Color | ![#222831](https://via.placeholder.com/10/222831?text=+) #222831 |
 | Secondary Color | ![#393E46](https://via.placeholder.com/10/393E46?text=+) #393E46 |
-| Accent Color | ![#00ADB5](https://via.placeholder.com/10/00ADB5?text=+) #00ADB5 |
-| Text Color | ![#EEEEEE](https://via.placeholder.com/10/EEEEEE?text=+) #EEEEEE |
+| Accent Color | ![#1da1f2 ](https://via.placeholder.com/10/00ADB5?text=+) #1da1f2  |
+| Text Color | ![#f9f9f9](https://via.placeholder.com/10/EEEEEE?text=+) #f9f9f9 |
 
 <br>
 <br>
